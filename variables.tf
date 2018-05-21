@@ -1,3 +1,14 @@
+#Boiler plate
+variable "env" {}
+
+variable "lock_table" {
+  type = "map"
+}
+
+variable "remote_state" {
+  type = "map"
+}
+
 variable "fleet_size" {}
 
 variable "allocation_strategy" {
@@ -25,8 +36,6 @@ variable "target_groups" {
 variable "key_name" {}
 
 variable "region" {}
-
-variable "env" {}
 
 /*
 CloudWatch configurations.
