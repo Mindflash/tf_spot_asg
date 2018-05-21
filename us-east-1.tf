@@ -638,8 +638,8 @@ resource "aws_cloudwatch_metric_alarm" "us_east_1_pa_cluster_mem_util_cloudwatch
 
 resource "aws_appautoscaling_target" "us_east_1_service_target" {
   count        = "${var.region == "us-east-1" ? 1 : 0}"
-  max_capacity = 50
-  min_capacity = "${var.cluster_size}"
+  max_capacity = 10
+  min_capacity = "${var.fleet_size}"
   resource_id  = "spot-fleet-request/${aws_spot_fleet_request.us_east1_fleet.id}"
   role_arn     = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/ec2.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_EC2SpotFleetRequest"
 
