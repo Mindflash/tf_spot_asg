@@ -721,25 +721,3 @@ resource "aws_cloudwatch_metric_alarm" "us_east_1_service_cpu_scaling" {
     "aws_appautoscaling_policy.us_east_1_service_down_policy",
   ]
 }
-
-resource "aws_cloudwatch_metric_alarm" "target_unhealthy" {
-  count               = "${length(var.target_groups)}"
-  alarm_name          = "${var.service_name}-${var.env}-${var.region}-Unhealthy-Target"
-  comparison_operator = "LessThanOrEqualTo"
-  evaluation_periods  = "2"
-  metric_name         = "HealthyHostCount"
-  namespace           = "AWS/ApplicationELB"
-  period              = "60"
-  statistic           = "Average"
-  threshold           = "0"
-
-  dimensions {
-    LoadBalancer = "${data.aws_lb.main.arn_suffix}"
-    TargetGroup  = "${var.tg_arn_suffix}"
-  }
-
-  alarm_description  = "Trigger an alert when response time in ${var.tg_arn_suffix} goes high"
-  alarm_actions      = ["${var.sns_arn}"]
-  ok_actions         = ["${var.sns_arn}"]
-  treat_missing_data = "notBreaching"
-}
