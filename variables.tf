@@ -17,11 +17,6 @@ variable "ami_id" {
   type = "string"
 }
 
-variable "subnet_ids" {
-  type    = "list"
-  default = []
-}
-
 variable "target_groups" {
   type    = "list"
   default = []

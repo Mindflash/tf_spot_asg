@@ -23,7 +23,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 0)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -39,7 +39,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 1)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -55,7 +55,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 2)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -71,7 +71,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 3)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -87,7 +87,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 4)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -103,7 +103,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 5)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -122,7 +122,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 0)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -138,7 +138,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 1)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -154,7 +154,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 2)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -170,7 +170,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 3)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -186,7 +186,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 4)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -202,7 +202,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 5)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -221,7 +221,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 0)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -237,7 +237,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 1)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -253,7 +253,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 2)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -269,7 +269,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 3)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -285,7 +285,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 4)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -301,7 +301,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 5)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -321,7 +321,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 0)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -336,7 +336,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 1)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -351,7 +351,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 2)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -366,7 +366,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 3)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -381,7 +381,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 4)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -396,7 +396,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 5)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -416,7 +416,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 0)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -431,7 +431,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 1)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -446,7 +446,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 2)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -461,7 +461,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 3)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -476,7 +476,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 4)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -491,7 +491,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 5)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -509,7 +509,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 0)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -524,7 +524,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 1)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -539,7 +539,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 2)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -554,7 +554,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 3)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -569,7 +569,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 4)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
@@ -584,7 +584,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(var.subnet_ids, 5)}"
+    subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
     vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
 
     ebs_block_device = {
