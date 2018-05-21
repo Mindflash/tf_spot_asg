@@ -8,11 +8,11 @@ Usage
 -----
 
 ```hcl
-module "ecs_request" {
-  source = "git@github.com:charles-d-burton/tf_ecs_cluster.git"
+module "request" {
+  source = "git@github.com:charles-d-burton/tf_spot_asg.git"
   region       = "us-east-1"
   env          = "dev"
-  cluster_size = "5"
+  fleet_size = "5"
   vpc_id       = "<your vpc>"
   subnet_ids   = [<list of subnets>]
   key_name     = "dev"
