@@ -8,7 +8,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
   replace_unhealthy_instances         = true
   wait_for_fulfillment                = true
   terminate_instances_with_expiration = true
-  target_groups                       = ["${var.target_groups}"]
+  target_group_arns                   = ["${var.target_groups}"]
 
   #TODO: Figure this out, relationship to other resources is problem
   lifecycle {
