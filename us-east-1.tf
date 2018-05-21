@@ -668,7 +668,7 @@ resource "aws_cloudwatch_metric_alarm" "us_east_1_service_cpu_scaling" {
   alarm_description = "CPU Autoscaling alarm to scale based on CPU"
 
   dimensions {
-    FleetRequestId = "${aws.aws_spot_fleet_request.us_east1_fleet.id}"
+    FleetRequestId = "${aws_spot_fleet_request.us_east1_fleet.id}"
   }
 
   alarm_actions = [
