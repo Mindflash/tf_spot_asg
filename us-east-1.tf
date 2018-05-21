@@ -32,6 +32,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -47,6 +51,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -64,6 +72,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -79,6 +91,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -96,6 +112,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -111,6 +131,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -131,6 +155,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -146,6 +174,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -163,6 +195,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -178,6 +214,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -195,6 +235,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -210,6 +254,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -230,6 +278,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -245,6 +297,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -262,6 +318,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -277,6 +337,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -294,6 +358,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
 
   launch_specification {
@@ -309,6 +377,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -330,6 +402,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -344,6 +420,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -360,6 +440,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -374,6 +458,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -390,6 +478,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -404,6 +496,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -425,6 +521,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -439,6 +539,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -455,6 +559,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -469,6 +577,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -485,6 +597,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -499,6 +615,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   ######################
@@ -518,6 +638,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -532,6 +656,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -548,6 +676,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -562,6 +694,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -578,6 +714,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
+    }
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -592,6 +732,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
+    }
+
+    tags {
+      Name = "${var.service_name}-spot-instance"
     }
   }
   depends_on = ["aws_iam_role.spot_instance_role", "aws_iam_role.spot_fleet_role"]
@@ -661,9 +805,9 @@ resource "aws_cloudwatch_metric_alarm" "us_east_1_service_cpu_scaling" {
   evaluation_periods  = "5"
   metric_name         = "CPUUtilization"
   namespace           = "AWS/EC2Spot"
-  period              = "85"
+  period              = "60"
   statistic           = "Average"
-  threshold           = "80"
+  threshold           = "85"
 
   alarm_description = "CPU Autoscaling alarm to scale based on CPU"
 
