@@ -1,4 +1,24 @@
+terraform {
+  backend "s3" {}
+}
+
 data "aws_caller_identity" "current" {}
+
+provider "aws" {
+  region = "${var.region}"
+}
+
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
+
+  config {
+    bucket     = "${lookup(var.remote_state, var.env)}"
+    encrypt    = true
+    key        = "${var.region}/vpc/terraform.tfstate"
+    lock_table = "${lookup(var.lock_table, var.env)}"
+    region     = "us-east-1"
+  }
+}
 
 #Policy document for the entire spot fleet cluster to assume the spot fleet role
 data "aws_iam_policy_document" "spot_fleet_role_policy" {
@@ -134,8 +154,4 @@ data "aws_iam_policy_document" "spot_fleet_autoscaling_role" {
 
     actions = ["sts:AssumeRole"]
   }
-}
-
-data "aws_vpc" "vpc" {
-  id = "${var.vpc_id}"
 }

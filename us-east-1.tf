@@ -3,7 +3,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
   count                               = "${var.region == "us-east-1" ? 1 : 0}"
   iam_fleet_role                      = "${aws_iam_role.spot_fleet_role.arn}"
   allocation_strategy                 = "${var.allocation_strategy}"
-  target_capacity                     = "${var.cluster_size}"
+  target_capacity                     = "${var.fleet_size}"
   valid_until                         = "${var.valid_until}"
   replace_unhealthy_instances         = true
   wait_for_fulfillment                = true
@@ -691,9 +691,9 @@ resource "aws_appautoscaling_policy" "us_east_1_service_up_policy" {
   depends_on = ["aws_appautoscaling_target.us_east_1_service_target"]
 }
 
-resource "aws_cloudwatch_metric_alarm" "us_east_1_service_highcpu_scaleup" {
+resource "aws_cloudwatch_metric_alarm" "us_east_1_service_cpu_scaling" {
   count               = "${var.region == "us-east-1" ? 1 : 0}"
-  alarm_name          = "pa-${var.env}-${var.region}-scaleup"
+  alarm_name          = "${var.service_name}-${var.env}-${var.region}-scaleup"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -705,36 +705,41 @@ resource "aws_cloudwatch_metric_alarm" "us_east_1_service_highcpu_scaleup" {
   alarm_description = "CPU Autoscaling alarm to scale up"
 
   dimensions {
-    ClusterName = "pa-${var.env}-${var.region}"
+    FleetRequestId = "${aws.aws_spot_fleet_request.us_east1_fleet.id}"
   }
 
   alarm_actions = [
     "${aws_appautoscaling_policy.us_east_1_service_up_policy.arn}",
   ]
 
-  depends_on = ["aws_appautoscaling_policy.us_east_1_service_up_policy"]
-}
-
-resource "aws_cloudwatch_metric_alarm" "us_east_1_service_highcpu_scaledown" {
-  count               = "${var.region == "us-east-1" ? 1 : 0}"
-  alarm_name          = "pa-${var.env}-${var.region}-scaledown"
-  comparison_operator = "LessThanOrEqualToThreshold"
-  evaluation_periods  = "2"
-  metric_name         = "CPUUtilization"
-  namespace           = "AWS/pa"
-  period              = "60"
-  statistic           = "Average"
-  threshold           = "60"
-
-  alarm_description = "CPU Autoscaling alarm to scale down"
-
-  dimensions {
-    ClusterName = "pa-${var.env}-${var.region}"
-  }
-
-  alarm_actions = [
+  ok_actions = [
     "${aws_appautoscaling_policy.us_east_1_service_down_policy.arn}",
   ]
 
-  depends_on = ["aws_appautoscaling_policy.us_east_1_service_down_policy"]
+  depends_on = [
+    "aws_appautoscaling_policy.us_east_1_service_up_policy",
+    "aws_appautoscaling_policy.us_east_1_service_down_policy",
+  ]
+}
+
+resource "aws_cloudwatch_metric_alarm" "target_unhealthy" {
+  count               = "${length(var.target_groups)}"
+  alarm_name          = "${var.service_name}-${var.env}-${var.region}-Unhealthy-Target"
+  comparison_operator = "LessThanOrEqualTo"
+  evaluation_periods  = "2"
+  metric_name         = "HealthyHostCount"
+  namespace           = "AWS/ApplicationELB"
+  period              = "60"
+  statistic           = "Average"
+  threshold           = "0"
+
+  dimensions {
+    LoadBalancer = "${data.aws_lb.main.arn_suffix}"
+    TargetGroup  = "${var.tg_arn_suffix}"
+  }
+
+  alarm_description  = "Trigger an alert when response time in ${var.tg_arn_suffix} goes high"
+  alarm_actions      = ["${var.sns_arn}"]
+  ok_actions         = ["${var.sns_arn}"]
+  treat_missing_data = "notBreaching"
 }

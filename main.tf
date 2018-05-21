@@ -2,7 +2,7 @@
 resource "aws_security_group" "instance_security_group" {
   name        = "${var.service_name}-${var.env}-instance-sg"
   description = "Instance security group for ${var.service_name}"
-  vpc_id      = "${var.vpc_id}"
+  vpc_id      = "${data.terraform_remote_state.vpc_id}"
 
   ingress {
     from_port   = 1

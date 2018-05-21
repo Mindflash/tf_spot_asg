@@ -27,8 +27,6 @@ variable "target_groups" {
   default = []
 }
 
-variable "vpc_id" {}
-
 variable "key_name" {}
 
 variable "region" {}
