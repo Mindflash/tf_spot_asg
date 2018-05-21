@@ -8,7 +8,7 @@ resource "aws_security_group" "instance_security_group" {
     from_port   = 1
     to_port     = 65535
     protocol    = "TCP"
-    cidr_blocks = ["${data.aws_vpc.vpc.cidr_block}"]
+    cidr_blocks = ["${data.terraform_remote_state.vpc.cidr_block}"]
   }
 
   egress {

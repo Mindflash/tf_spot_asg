@@ -24,7 +24,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -40,7 +40,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -56,7 +56,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -72,7 +72,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -88,7 +88,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -104,7 +104,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -123,7 +123,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -139,7 +139,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -155,7 +155,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -171,7 +171,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -187,7 +187,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -203,7 +203,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -222,7 +222,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -238,7 +238,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -254,7 +254,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -270,7 +270,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -286,7 +286,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -302,7 +302,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -322,7 +322,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -337,7 +337,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -352,7 +352,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -367,7 +367,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -382,7 +382,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -397,7 +397,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -417,7 +417,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -432,7 +432,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -447,7 +447,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -462,7 +462,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -477,7 +477,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -492,7 +492,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -510,7 +510,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 0)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -525,7 +525,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 1)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -540,7 +540,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 2)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -555,7 +555,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 3)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -570,7 +570,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 4)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -585,7 +585,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
     subnet_id              = "${element(data.terraform_remote_state.vpc.subnet_ids, 5)}"
-    vpc_security_group_ids = ["${aws_security_group.pa_instance_security_group.id}"]
+    vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
       volume_type           = "gp2"
@@ -598,43 +598,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
 }
 
 #Cloudwatch autoscaling and monitoring
-resource "aws_cloudwatch_metric_alarm" "us_east_1_pa_cluster_cpu_util_cloudwatch" {
-  count               = "${var.region == "us-east-1" ? 1 : 0}"
-  alarm_name          = "pa-${var.env}-${var.region} ${var.cpu_util_metric_name}"
-  comparison_operator = "${var.cpu_util_comparison_operator}"
-  evaluation_periods  = "${var.cpu_util_evaluation_periods}"
-  metric_name         = "${var.cpu_util_metric_name}"
-  namespace           = "${var.cpu_util_namespace}"
-  period              = "${var.cpu_util_period}"
-  statistic           = "${var.cpu_util_statistic}"
-  threshold           = "${var.cpu_util_threshold}"
-  alarm_actions       = "${var.notification}"
-
-  alarm_description = "CloudWatch metric alarm: pa-${var.env}-${var.region} ${var.cpu_util_metric_name} ${var.cpu_util_comparison_operator}"
-
-  dimensions {
-    ClusterName = "pa-${var.env}-${var.region}"
-  }
-}
-
-resource "aws_cloudwatch_metric_alarm" "us_east_1_pa_cluster_mem_util_cloudwatch" {
-  count               = "${var.region == "us-east-1" ? 1 : 0}"
-  alarm_name          = "pa-${var.env}-${var.region} ${var.memory_util_metric_name}"
-  comparison_operator = "${var.memory_util_comparison_operator}"
-  evaluation_periods  = "${var.memory_util_evaluation_periods}"
-  metric_name         = "${var.memory_util_metric_name}"
-  namespace           = "${var.memory_util_namespace}"
-  period              = "${var.memory_util_period}"
-  statistic           = "${var.memory_util_statistic}"
-  threshold           = "${var.memory_util_threshold}"
-  alarm_actions       = "${var.notification}"
-
-  alarm_description = "CloudWatch metric alarm: pa-${var.env}-${var.region} ${var.memory_util_metric_name} ${var.memory_util_comparison_operator}"
-
-  dimensions {
-    ClusterName = "pa-${var.env}-${var.region}"
-  }
-}
 
 resource "aws_appautoscaling_target" "us_east_1_service_target" {
   count        = "${var.region == "us-east-1" ? 1 : 0}"
@@ -695,14 +658,14 @@ resource "aws_cloudwatch_metric_alarm" "us_east_1_service_cpu_scaling" {
   count               = "${var.region == "us-east-1" ? 1 : 0}"
   alarm_name          = "${var.service_name}-${var.env}-${var.region}-scaleup"
   comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_periods  = "2"
+  evaluation_periods  = "5"
   metric_name         = "CPUUtilization"
-  namespace           = "AWS/pa"
-  period              = "60"
+  namespace           = "AWS/EC2Spot"
+  period              = "85"
   statistic           = "Average"
   threshold           = "80"
 
-  alarm_description = "CPU Autoscaling alarm to scale up"
+  alarm_description = "CPU Autoscaling alarm to scale based on CPU"
 
   dimensions {
     FleetRequestId = "${aws.aws_spot_fleet_request.us_east1_fleet.id}"
