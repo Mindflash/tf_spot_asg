@@ -2,13 +2,13 @@
 resource "aws_security_group" "instance_security_group" {
   name        = "${var.service_name}-${var.env}-instance-sg"
   description = "Instance security group for ${var.service_name}"
-  vpc_id      = "${data.terraform_remote_state.vpc.vpc_id}"
+  vpc_id      = "${var.vpc_id}"
 
   ingress {
     from_port   = 1
     to_port     = 65535
     protocol    = "TCP"
-    cidr_blocks = ["${data.terraform_remote_state.vpc.vpc_cidr_block}"]
+    cidr_blocks = ["${var.cidr_block}"]
   }
 
   egress {

@@ -1,12 +1,14 @@
 #Generate the spot fleet request, loads Userdata to each instance to join it to the cluster
 resource "aws_spot_fleet_request" "us_east1_fleet" {
-  count                               = "${var.region == "us-east-1" ? 1 : 0}"
-  iam_fleet_role                      = "${aws_iam_role.spot_fleet_role.arn}"
-  allocation_strategy                 = "${var.allocation_strategy}"
-  target_capacity                     = "${var.fleet_size}"
-  valid_until                         = "${var.valid_until}"
-  replace_unhealthy_instances         = true
-  wait_for_fulfillment                = true
+  count                       = "${var.region == "us-east-1" ? 1 : 0}"
+  iam_fleet_role              = "${aws_iam_role.spot_fleet_role.arn}"
+  allocation_strategy         = "${var.allocation_strategy}"
+  target_capacity             = "${var.fleet_size}"
+  valid_until                 = "${var.valid_until}"
+  replace_unhealthy_instances = true
+  wait_for_fulfillment        = true
+
+  //Careful here, this means that once the new request is created these are destroyed
   terminate_instances_with_expiration = true
   target_group_arns                   = ["${var.target_groups}"]
 
@@ -23,7 +25,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 0)}"
+    subnet_id              = "${element(var.subnets, 0)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -31,10 +33,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -43,7 +41,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 1)}"
+    subnet_id              = "${element(var.subnets, 1)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -51,10 +49,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -63,7 +57,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 2)}"
+    subnet_id              = "${element(var.subnets, 2)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -71,10 +65,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -83,7 +73,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 3)}"
+    subnet_id              = "${element(var.subnets, 3)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -91,10 +81,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -103,7 +89,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 4)}"
+    subnet_id              = "${element(var.subnets, 4)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -111,10 +97,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -123,7 +105,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 5)}"
+    subnet_id              = "${element(var.subnets, 5)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -131,10 +113,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -146,7 +124,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 0)}"
+    subnet_id              = "${element(var.subnets, 0)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -154,10 +132,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -166,7 +140,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 1)}"
+    subnet_id              = "${element(var.subnets, 1)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -174,10 +148,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -186,7 +156,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 2)}"
+    subnet_id              = "${element(var.subnets, 2)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -194,10 +164,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -206,7 +172,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 3)}"
+    subnet_id              = "${element(var.subnets, 3)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -214,10 +180,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -226,7 +188,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 4)}"
+    subnet_id              = "${element(var.subnets, 4)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -234,10 +196,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -246,7 +204,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 5)}"
+    subnet_id              = "${element(var.subnets, 5)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -254,10 +212,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -269,7 +223,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 0)}"
+    subnet_id              = "${element(var.subnets, 0)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -277,10 +231,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -289,7 +239,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 1)}"
+    subnet_id              = "${element(var.subnets, 1)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -297,10 +247,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -309,7 +255,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 2)}"
+    subnet_id              = "${element(var.subnets, 2)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -317,10 +263,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -329,7 +271,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 3)}"
+    subnet_id              = "${element(var.subnets, 3)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -337,10 +279,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -349,7 +287,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 4)}"
+    subnet_id              = "${element(var.subnets, 4)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -357,10 +295,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -369,7 +303,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.env}-${var.region}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 5)}"
+    subnet_id              = "${element(var.subnets, 5)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -377,10 +311,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -393,7 +323,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 0)}"
+    subnet_id              = "${element(var.subnets, 0)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -401,10 +331,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -412,7 +338,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 1)}"
+    subnet_id              = "${element(var.subnets, 1)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -420,10 +346,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -431,7 +353,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 2)}"
+    subnet_id              = "${element(var.subnets, 2)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -439,10 +361,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -450,7 +368,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 3)}"
+    subnet_id              = "${element(var.subnets, 3)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -458,10 +376,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -469,7 +383,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 4)}"
+    subnet_id              = "${element(var.subnets, 4)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -477,10 +391,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -488,7 +398,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 5)}"
+    subnet_id              = "${element(var.subnets, 5)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -496,10 +406,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
 
@@ -512,7 +418,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 0)}"
+    subnet_id              = "${element(var.subnets, 0)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -520,10 +426,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -531,7 +433,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 1)}"
+    subnet_id              = "${element(var.subnets, 1)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -539,10 +441,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -550,7 +448,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 2)}"
+    subnet_id              = "${element(var.subnets, 2)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -558,10 +456,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -569,7 +463,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 3)}"
+    subnet_id              = "${element(var.subnets, 3)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -577,10 +471,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -588,7 +478,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 4)}"
+    subnet_id              = "${element(var.subnets, 4)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -596,10 +486,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -607,7 +493,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 5)}"
+    subnet_id              = "${element(var.subnets, 5)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -615,10 +501,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   ######################
@@ -629,7 +511,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 0)}"
+    subnet_id              = "${element(var.subnets, 0)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -637,10 +519,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -648,7 +526,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 1)}"
+    subnet_id              = "${element(var.subnets, 1)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -656,10 +534,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -667,7 +541,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 2)}"
+    subnet_id              = "${element(var.subnets, 2)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -675,10 +549,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -686,7 +556,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 3)}"
+    subnet_id              = "${element(var.subnets, 3)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -694,10 +564,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -705,7 +571,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 4)}"
+    subnet_id              = "${element(var.subnets, 4)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -713,10 +579,6 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   launch_specification {
@@ -724,7 +586,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
     ami                    = "${var.ami_id}"
     key_name               = "${var.key_name}"
     iam_instance_profile   = "${aws_iam_instance_profile.instance_profile.name}"
-    subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 5)}"
+    subnet_id              = "${element(var.subnets, 5)}"
     vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
 
     ebs_block_device = {
@@ -732,17 +594,12 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       volume_size           = "20"
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
-    }
-
-    tags {
-      Name = "${var.service_name}-spot-instance"
     }
   }
   depends_on = ["aws_iam_role.spot_instance_role", "aws_iam_role.spot_fleet_role"]
 }
 
 #Cloudwatch autoscaling and monitoring
-
 resource "aws_appautoscaling_target" "us_east_1_service_target" {
   count        = "${var.region == "us-east-1" ? 1 : 0}"
   max_capacity = 10
@@ -798,7 +655,7 @@ resource "aws_appautoscaling_policy" "us_east_1_service_up_policy" {
   depends_on = ["aws_appautoscaling_target.us_east_1_service_target"]
 }
 
-resource "aws_cloudwatch_metric_alarm" "us_east_1_service_cpu_scaling" {
+resource "aws_cloudwatch_metric_alarm" "service_cpu_scaling" {
   count               = "${var.region == "us-east-1" ? 1 : 0}"
   alarm_name          = "${var.service_name}-${var.env}-${var.region}-scaleup"
   comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -810,6 +667,37 @@ resource "aws_cloudwatch_metric_alarm" "us_east_1_service_cpu_scaling" {
   threshold           = "85"
 
   alarm_description = "CPU Autoscaling alarm to scale based on CPU"
+
+  dimensions {
+    FleetRequestId = "${aws_spot_fleet_request.us_east1_fleet.id}"
+  }
+
+  alarm_actions = [
+    "${aws_appautoscaling_policy.us_east_1_service_up_policy.arn}",
+  ]
+
+  ok_actions = [
+    "${aws_appautoscaling_policy.us_east_1_service_down_policy.arn}",
+  ]
+
+  depends_on = [
+    "aws_appautoscaling_policy.us_east_1_service_up_policy",
+    "aws_appautoscaling_policy.us_east_1_service_down_policy",
+  ]
+}
+
+resource "aws_cloudwatch_metric_alarm" "spot_fleet_capacity_alarm" {
+  count               = "${var.region == "us-east-1" ? 1 : 0}"
+  alarm_name          = "${var.service_name}-${var.env}-${var.region}-capacity"
+  comparison_operator = "LessThanOrEqualTo"
+  evaluation_periods  = "5"
+  metric_name         = "FulfilledCapacity"
+  namespace           = "AWS/EC2Spot"
+  period              = "60"
+  statistic           = "Average"
+  threshold           = "${var.fleet_size}"
+
+  alarm_description = "Fire alarm when capacity fall below minimum"
 
   dimensions {
     FleetRequestId = "${aws_spot_fleet_request.us_east1_fleet.id}"

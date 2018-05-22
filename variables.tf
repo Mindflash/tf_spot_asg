@@ -1,12 +1,19 @@
 #Boiler plate
 variable "env" {}
 
-variable "lock_table" {
-  type = "map"
+variable "cidr_block" {
+  type        = "string"
+  description = "VPC Cidr block for incoming connections"
 }
 
-variable "remote_state" {
-  type = "map"
+variable "vpc_id" {
+  type        = "string"
+  description = "ID of VPC to deploy into"
+}
+
+variable "subnets" {
+  type        = "list"
+  description = "list of subnets to add instances to"
 }
 
 variable "fleet_size" {}
