@@ -11,6 +11,13 @@ resource "aws_security_group" "instance_security_group" {
     cidr_blocks = ["${var.cidr_block}"]
   }
 
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "TCP"
+    cidr_blocks = ["10.5.0.0/16"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
