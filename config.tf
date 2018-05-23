@@ -57,6 +57,9 @@ data "aws_iam_policy_document" "spot_fleet_policy" {
       "ec2:DescribeSpotFleetRequestHistory",
       "ec2:ModifySpotFleetRequest",
       "ec2:RequestSpotFleet",
+      "elasticloadbalancing:DeregisterTargets",
+      "elasticloadbalancing:Describe*",
+      "elasticloadbalancing:RegisterTargets",
       "iam:PassRole",
     ]
 
@@ -95,6 +98,9 @@ data "aws_iam_policy_document" "spot_fleet_instance_policy" {
       "ec2:DescribeSpotFleetRequestHistory",
       "ec2:ModifySpotFleetRequest",
       "ec2:RequestSpotFleet",
+      "elasticloadbalancing:DeregisterTargets",
+      "elasticloadbalancing:Describe*",
+      "elasticloadbalancing:RegisterTargets",
       "logs:CreateLogStream",
       "logs:PutLogEvents",
       "logs:CreateLogGroup",
@@ -114,10 +120,14 @@ data "aws_iam_policy_document" "spot_fleet_autoscaling_policy" {
     actions = [
       "ec2:DescribeSpotFleetRequests",
       "ec2:ModifySpotFleetRequest",
+      "ec2.DescribeInstanceStatus",
       "cloudwatch:DescribeAlarms",
       "cloudwatch:PutMetricAlarm",
       "cloudwatch:GetMetricStatistics",
       "cloudwatch:ListMetrics",
+      "elasticloadbalancing:DeregisterTargets",
+      "elasticloadbalancing:Describe*",
+      "elasticloadbalancing:RegisterTargets",
     ]
 
     resources = [
