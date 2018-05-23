@@ -11,6 +11,7 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
   //Careful here, this means that once the new request is created these are destroyed
   terminate_instances_with_expiration = true
   target_group_arns                   = ["${var.target_groups}"]
+  load_balancers                      = ["${var.load_balancers}"]
 
   #TODO: Figure this out, relationship to other resources is problem
   lifecycle {

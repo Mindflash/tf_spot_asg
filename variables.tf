@@ -40,6 +40,11 @@ variable "target_groups" {
   default = []
 }
 
+variable "load_balancers" {
+  type    = "list"
+  default = []
+}
+
 variable "key_name" {}
 
 variable "region" {}
