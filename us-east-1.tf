@@ -689,7 +689,7 @@ resource "aws_cloudwatch_metric_alarm" "service_cpu_scaling" {
 resource "aws_cloudwatch_metric_alarm" "spot_fleet_capacity_alarm" {
   count               = "${var.region == "us-east-1" ? 1 : 0}"
   alarm_name          = "${var.service_name}-${var.env}-${var.region}-capacity"
-  comparison_operator = "LessThanOrEqualTo"
+  comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "5"
   metric_name         = "FulfilledCapacity"
   namespace           = "AWS/EC2Spot"
