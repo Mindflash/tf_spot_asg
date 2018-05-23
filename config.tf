@@ -141,17 +141,6 @@ data "aws_iam_policy_document" "spot_fleet_autoscaling_policy" {
       "cloudwatch:PutMetricAlarm",
       "cloudwatch:GetMetricStatistics",
       "cloudwatch:ListMetrics",
-      "elasticloadbalancing:DeregisterTargets",
-      "elasticloadbalancing:DescribeAccountLimits",
-      "elasticloadbalancing:DescribeListenerCertificates",
-      "elasticloadbalancing:DescribeLoadBalancerAttributes",
-      "elasticloadbalancing:DescribeLoadBalancers",
-      "elasticloadbalancing:DescribeSSLPolicies",
-      "elasticloadbalancing:DescribeTags",
-      "elasticloadbalancing:DescribeTargetGroupAttributes",
-      "elasticloadbalancing:DescribeTargetHealth",
-      "elasticloadbalancing:DescribeRules",
-      "elasticloadbalancing:RegisterTargets",
     ]
 
     resources = [
