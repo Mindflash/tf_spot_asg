@@ -25,3 +25,11 @@ resource "aws_security_group" "instance_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+data "template_file" "userdata" {
+  template = "${file("${path.module}/userdata.sh")}"
+
+  vars {
+    env = "${var.env}"
+  }
+}

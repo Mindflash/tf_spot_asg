@@ -35,6 +35,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -51,6 +53,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -67,6 +71,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -83,6 +89,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -99,6 +107,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -115,6 +125,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   ######################
@@ -134,6 +146,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -150,6 +164,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -166,6 +182,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -182,6 +200,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -198,6 +218,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -214,6 +236,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   ######################
@@ -233,6 +257,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -249,6 +275,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -265,6 +293,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -281,6 +311,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -297,6 +329,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   launch_specification {
@@ -313,6 +347,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   ######################
@@ -333,6 +369,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -348,6 +386,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -363,6 +403,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -378,6 +420,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -393,6 +437,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "m5.xlarge"
@@ -408,6 +454,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
 
   ######################
@@ -428,6 +476,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -443,6 +493,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -458,6 +510,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -473,6 +527,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -488,6 +544,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "c5.xlarge"
@@ -503,6 +561,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   ######################
   #R4.xlarge
@@ -521,6 +581,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -536,6 +598,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -551,6 +615,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -566,6 +632,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -581,6 +649,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   launch_specification {
     instance_type          = "r4.xlarge"
@@ -596,6 +666,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
       delete_on_termination = "true"
       device_name           = "/dev/xvda"
     }
+
+    user_data = "${data.template_file.userdata.rendered}"
   }
   depends_on = ["aws_iam_role.spot_instance_role", "aws_iam_role.spot_fleet_role"]
 }
