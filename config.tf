@@ -126,6 +126,21 @@ data "aws_iam_policy_document" "spot_fleet_instance_policy" {
       "*",
     ]
   }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:ListBucket",
+      "s3:GetObject",
+      "s3:GetBucketLocation",
+    ]
+
+    resources = [
+      "arn:aws:s3:::mf-pa-secrets/*",
+      "arn:aws:s3:::mf-pa-secrets",
+    ]
+  }
 }
 
 #Policy to allow the cluster to autoscale
