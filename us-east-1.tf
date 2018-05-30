@@ -8,8 +8,8 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
   replace_unhealthy_instances = true
   wait_for_fulfillment        = true
 
-  //Careful here, this means that once the new request is created these are destroyed
-  terminate_instances_with_expiration = true
+  //Careful here, this means that once the new request is created these are destroyed when set to true
+  terminate_instances_with_expiration = false
   target_group_arns                   = ["${var.target_groups}"]
   load_balancers                      = ["${var.load_balancers}"]
 
@@ -672,6 +672,15 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
   depends_on = ["aws_iam_role.spot_instance_role", "aws_iam_role.spot_fleet_role"]
 }
 
+resource "random_id" "suffix" {
+  /*   keepers = {
+    # Generate a new id each time we switch to a new AMI id
+    spot_id = "${aws_spot_fleet_request.us_east1_fleet.id}"
+  } */
+
+  byte_length = 8
+}
+
 #Cloudwatch autoscaling and monitoring
 resource "aws_appautoscaling_target" "us_east_1_service_target" {
   count        = "${var.region == "us-east-1" ? 1 : 0}"
@@ -692,7 +701,7 @@ resource "aws_appautoscaling_target" "us_east_1_service_target" {
 }
 
 resource "aws_appautoscaling_policy" "us_east_1_service_down_policy" {
-  name               = "scale-down-pa-${var.env}-${var.region}"
+  name               = "scale-down-pa-${var.env}-${random_id.suffix.hex}"
   resource_id        = "spot-fleet-request/${aws_spot_fleet_request.us_east1_fleet.id}"
   scalable_dimension = "ec2:spot-fleet-request:TargetCapacity"
   service_namespace  = "ec2"
@@ -715,7 +724,7 @@ resource "aws_appautoscaling_policy" "us_east_1_service_down_policy" {
 
 resource "aws_appautoscaling_policy" "us_east_1_service_up_policy" {
   count              = "${var.region == "us-east-1" ? 1 : 0}"
-  name               = "scale-up-pa-${var.env}-${var.region}"
+  name               = "scale-up-pa-${var.env}-${random_id.suffix.hex}"
   resource_id        = "spot-fleet-request/${aws_spot_fleet_request.us_east1_fleet.id}"
   scalable_dimension = "ec2:spot-fleet-request:TargetCapacity"
   service_namespace  = "ec2"
@@ -738,7 +747,7 @@ resource "aws_appautoscaling_policy" "us_east_1_service_up_policy" {
 
 resource "aws_cloudwatch_metric_alarm" "service_cpu_scaling" {
   count               = "${var.region == "us-east-1" ? 1 : 0}"
-  alarm_name          = "${var.service_name}-${var.env}-${var.region}-scaleup"
+  alarm_name          = "${var.service_name}-${var.env}-scaleup-${random_id.suffix.hex}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "5"
   metric_name         = "CPUUtilization"
@@ -769,7 +778,7 @@ resource "aws_cloudwatch_metric_alarm" "service_cpu_scaling" {
 
 resource "aws_cloudwatch_metric_alarm" "spot_fleet_capacity_alarm" {
   count               = "${var.region == "us-east-1" ? 1 : 0}"
-  alarm_name          = "${var.service_name}-${var.env}-${var.region}-capacity"
+  alarm_name          = "${var.service_name}-${var.env}-capacity-${random_id.suffix.hex}"
   comparison_operator = "LessThanThreshold"
   evaluation_periods  = "5"
   metric_name         = "FulfilledCapacity"
