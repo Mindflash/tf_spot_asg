@@ -14,10 +14,10 @@ resource "aws_spot_fleet_request" "us_east1_fleet" {
   load_balancers                      = ["${var.load_balancers}"]
 
   #TODO: Figure this out, relationship to other resources is problem
-  lifecycle {
-    create_before_destroy = true
-  }
-
+  /* lifecycle {
+      create_before_destroy = true
+    }
+   */
   ######################
   #m5.large
   ######################
