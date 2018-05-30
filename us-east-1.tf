@@ -685,6 +685,10 @@ resource "aws_appautoscaling_target" "us_east_1_service_target" {
   scalable_dimension = "ec2:spot-fleet-request:TargetCapacity"
 
   service_namespace = "ec2"
+
+  depends_on = [
+    "aws_spot_fleet_request.us_east1_fleet",
+  ]
 }
 
 resource "aws_appautoscaling_policy" "us_east_1_service_down_policy" {
@@ -704,7 +708,9 @@ resource "aws_appautoscaling_policy" "us_east_1_service_down_policy" {
     }
   }
 
-  depends_on = ["aws_appautoscaling_target.us_east_1_service_target"]
+  depends_on = [
+    "aws_appautoscaling_target.us_east_1_service_target",
+  ]
 }
 
 resource "aws_appautoscaling_policy" "us_east_1_service_up_policy" {
@@ -725,7 +731,9 @@ resource "aws_appautoscaling_policy" "us_east_1_service_up_policy" {
     }
   }
 
-  depends_on = ["aws_appautoscaling_target.us_east_1_service_target"]
+  depends_on = [
+    "aws_appautoscaling_target.us_east_1_service_target",
+  ]
 }
 
 resource "aws_cloudwatch_metric_alarm" "service_cpu_scaling" {
