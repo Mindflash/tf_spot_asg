@@ -37,6 +37,21 @@ data "aws_iam_policy_document" "cloudwatch_policy" {
       "arn:aws:logs:*:*:*",
     ]
   }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:ListBucket",
+      "s3:GetObject",
+      "s3:GetBucketLocation",
+    ]
+
+    resources = [
+      "arn:aws:s3:::mf-pa-secrets/*",
+      "arn:aws:s3:::mf-pa-secrets",
+    ]
+  }
 }
 
 resource "aws_iam_role" "instance_role" {
