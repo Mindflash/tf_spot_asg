@@ -79,9 +79,9 @@ resource "aws_autoscaling_group" "asg" {
   min_elb_capacity     = "${var.max_size}"
   launch_configuration = "${aws_launch_configuration.lc.id}"
   health_check_type    = "EC2"
-  target_group_arns    = "${var.target_group_arns}"
+  target_group_arns    = ["${var.target_group_arns}"]
   desired_capacity     = "${var.max_size}"
-  vpc_zone_identifier  = "${var.subnets}"
+  vpc_zone_identifier  = ["${var.subnets}"]
   placement_group      = "${aws_placement_group.pg.id}"
 
   lifecycle {
