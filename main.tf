@@ -56,7 +56,7 @@ resource "aws_launch_configuration" "lc" {
   instance_type        = "${var.instance_type}"
   security_groups      = ["${aws_security_group.instance_security_group.id}"]
   key_name             = "${var.key_name}"
-  ebs_optimized        = true
+  ebs_optimized        = false
   iam_instance_profile = "${aws_iam_instance_profile.asg_instance_profile.arn}"
 
   root_block_device {
