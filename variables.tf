@@ -16,28 +16,35 @@ variable "subnets" {
   description = "list of subnets to add instances to"
 }
 
-variable "fleet_size" {}
-
-variable "allocation_strategy" {
+variable "instance_type" {
   type    = "string"
-  default = "diversified"
+  default = "t2.medium"
 }
 
 variable "service_name" {
   type = "string"
 }
 
-variable "valid_until" {
-  default = "2022-11-04T20:44:20Z"
-}
-
 variable "ami_id" {
   type = "string"
 }
 
-variable "target_groups" {
-  type    = "list"
-  default = []
+variable "max_size" {
+  type        = "string"
+  description = "max nodes in asg"
+  default     = 1
+}
+
+variable "min_size" {
+  type        = "string"
+  description = "min nodes in asg"
+  default     = 1
+}
+
+variable "target_group_arns" {
+  type        = "list"
+  description = "List of target groups to attache"
+  default     = []
 }
 
 variable "load_balancers" {

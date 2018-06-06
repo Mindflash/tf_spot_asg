@@ -1,4 +1,4 @@
-AWS ECS Spot Fleet Request
+AWS ASG Request
 =================================
 
 Terraform module which creates an autoscaling Spot Fleet and an ECS Cluster on AWS.
@@ -12,7 +12,7 @@ module "request" {
   source = "git@github.com:charles-d-burton/tf_spot_asg.git"
   region       = "us-east-1"
   env          = "dev"
-  fleet_size = "5"
+  max_size     = "5"
   vpc_id       = "<your vpc>"
   subnet_ids   = [<list of subnets>]
   key_name     = "dev"

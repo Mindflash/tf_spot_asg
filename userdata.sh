@@ -8,6 +8,3 @@ chown app:app /home/app/node/key.pem
 chmod 755 /etc/mf-secrets
 chmod 644 /etc/mf-secrets/*
 chmod 644 /etc/mf-env
-
-#Give the FS time to sync before the apps start
-sleep 2
