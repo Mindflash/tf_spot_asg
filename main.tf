@@ -73,7 +73,7 @@ resource "aws_launch_configuration" "lc" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  name                 = "${var.service_name}-${aws_launch_configuration.lc.name}"
+  name                 = "${aws_launch_configuration.lc.name}"
   min_size             = "${var.min_size}"
   max_size             = "${var.max_size}"
   min_elb_capacity     = "${var.max_size}"
