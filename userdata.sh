@@ -1,4 +1,10 @@
 #!/bin/bash
+while [ ! -f /snap/bin/aws ]
+do
+ echo "Waiting for aws cli"
+ sleep 1; 
+done
+
 echo ${env} > /etc/mf-env
 export PATH=$PATH:/snap/bin
 mkdir /etc/mf-secrets
