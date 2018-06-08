@@ -32,7 +32,7 @@ variable "ami_id" {
 variable "max_size" {
   type        = "string"
   description = "max nodes in asg"
-  default     = 1
+  default     = 5
 }
 
 variable "min_size" {

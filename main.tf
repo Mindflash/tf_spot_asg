@@ -76,15 +76,41 @@ resource "aws_autoscaling_group" "asg" {
   name                 = "${aws_launch_configuration.lc.name}"
   min_size             = "${var.min_size}"
   max_size             = "${var.max_size}"
-  min_elb_capacity     = "${var.max_size}"
+  min_elb_capacity     = "${var.min_size}"
   launch_configuration = "${aws_launch_configuration.lc.id}"
   health_check_type    = "EC2"
   target_group_arns    = ["${var.target_group_arns}"]
-  desired_capacity     = "${var.max_size}"
+  desired_capacity     = "${var.min_size}"
   vpc_zone_identifier  = ["${var.subnets}"]
   placement_group      = "${aws_placement_group.pg.id}"
 
   lifecycle {
     create_before_destroy = true
   }
+
+  tag {
+    key                 = "Name"
+    value               = "${var.service_name}"
+    propagate_at_launch = true
+  }
 }
+
+#Cloudwatch autoscaling and monitoring
+/* resource "aws_cloudwatch_metric_alarm" "us_east_1_pa_cluster_cpu_util_cloudwatch" {
+  alarm_name          = "${var.service_name}-cpu-alarm"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "3"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "80"
+  alarm_actions       = "${var.notification}"
+
+  alarm_description = "CloudWatch metric alarm: pa-${var.env}-${var.region} ${var.cpu_util_metric_name} ${var.cpu_util_comparison_operator}"
+
+  dimensions {
+    ClusterName = "pa-${var.env}-${var.region}"
+  }
+} */
+
