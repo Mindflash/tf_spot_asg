@@ -90,7 +90,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.service_name}"
+    value               = "${aws_launch_configuration.lc.name}"
     propagate_at_launch = true
   }
 }
