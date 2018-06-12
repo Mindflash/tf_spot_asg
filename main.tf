@@ -51,7 +51,7 @@ resource "aws_placement_group" "pg" {
 }
 
 resource "aws_launch_configuration" "lc" {
-  name                 = "${var.service_name}-${var.version}"
+  name                 = "${var.service_name}-${var.release_version}"
   image_id             = "${var.ami_id}"
   instance_type        = "${var.instance_type}"
   security_groups      = ["${aws_security_group.instance_security_group.id}"]
