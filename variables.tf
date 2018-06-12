@@ -29,6 +29,11 @@ variable "ami_id" {
   type = "string"
 }
 
+variable "version" {
+  type        = "string"
+  description = "version of the software to deploy"
+}
+
 variable "max_size" {
   type        = "string"
   description = "max nodes in asg"

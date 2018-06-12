@@ -51,7 +51,7 @@ resource "aws_placement_group" "pg" {
 }
 
 resource "aws_launch_configuration" "lc" {
-  name_prefix          = "${var.service_name}-"
+  name                 = "${var.service_name}-${var.version}"
   image_id             = "${var.ami_id}"
   instance_type        = "${var.instance_type}"
   security_groups      = ["${aws_security_group.instance_security_group.id}"]
@@ -73,7 +73,7 @@ resource "aws_launch_configuration" "lc" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  name                 = "${aws_launch_configuration.lc.name}"
+  name                 = "${var.service_name}-${var.version}"
   min_size             = "${var.min_size}"
   max_size             = "${var.max_size}"
   min_elb_capacity     = "${var.min_size}"
@@ -91,7 +91,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${aws_launch_configuration.lc.name}"
+    value               = "${var.service_name}-${var.version}"
     propagate_at_launch = true
   }
 }
