@@ -29,7 +29,7 @@ variable "ami_id" {
   type = "string"
 }
 
-variable "version" {
+variable "release_version" {
   type        = "string"
   description = "version of the software to deploy"
 }
