@@ -88,6 +88,10 @@ resource "aws_autoscaling_group" "asg" {
     create_before_destroy = true
   }
 
+  lifecycle {
+    ignore_changes = ["target_group_arns.#"]
+  }
+
   tag {
     key                 = "Name"
     value               = "${aws_launch_configuration.lc.name}"
