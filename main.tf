@@ -73,7 +73,7 @@ resource "aws_launch_configuration" "lc" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  name                 = "${var.service_name}-${var.version}"
+  name                 = "${var.service_name}-${var.release_version}"
   min_size             = "${var.min_size}"
   max_size             = "${var.max_size}"
   min_elb_capacity     = "${var.min_size}"
@@ -91,7 +91,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.service_name}-${var.version}"
+    value               = "${var.service_name}-${var.release_version}"
     propagate_at_launch = true
   }
 }
