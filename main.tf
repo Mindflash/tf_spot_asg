@@ -86,10 +86,7 @@ resource "aws_autoscaling_group" "asg" {
 
   lifecycle {
     create_before_destroy = true
-  }
-
-  lifecycle {
-    ignore_changes = ["target_group_arns.#"]
+    ignore_changes        = ["target_group_arns.#"]
   }
 
   tag {
